@@ -77,8 +77,8 @@ public class CardCollection {
 	 * @return the rank of which there are (at least) two cards, and 0 otherwise.
 	 */	
 	public int hasPair() {
-		 for(int i = 0; i<cards.length; i++){
-			for(int k = i+1;k<cards.length-1;k++)
+		 for(int i = 0; i<cards.length-1; i++){
+			for(int k = i+1;k<cards.length;k++)
 			if(cards[i].getRank() == cards[k].getRank())
 				return cards[i].getRank();
 		}
@@ -146,9 +146,9 @@ public class CardCollection {
 	  * 
 	  * provide the best case, average case, and worst case complexity of your 
 	  * algorithm below 
-	  * BEST CASE = 
-	  * AVERAGE CASE = 
-	  * WORST CASE = 
+	  * BEST CASE = O(1)
+	  * AVERAGE CASE = O((N^2)/2)
+	  * WORST CASE = O(N^2)
 	  */
 	public void sort() { //Uses selection sort to sort the cards array
 		if(cards == null)
