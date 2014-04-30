@@ -9,7 +9,7 @@ public class CardCollectionSizeFourTest {
 	@Test
 	public void testCardCollectionCardArray() {
 		for(int i = 0; i<10;i++){
-			Card[] cards = new Card[(int)Math.random()*1000];
+			Card[] cards = new Card[4];
 			CardCollection collection = new CardCollection(cards);
 			for(int k = 0; i<collection.getSize();i++){
 				assertEquals(cards[k].getSuit(), collection.getCard(k).getSuit());
