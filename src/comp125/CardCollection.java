@@ -214,7 +214,7 @@ public class CardCollection {
 		 if(cards.length != other.cards.length)
 			 return false;
 		for(int i = 0; i<cards.length;i++)
-				 if(cards[i] != other.cards[i])
+				 if(cards[i].getRank() != other.cards[i].getRank() || cards[i].getSuit() != other.cards[i].getSuit())
 					 return false;
 		 return true;
 	 }

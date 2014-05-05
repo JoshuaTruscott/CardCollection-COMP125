@@ -10,14 +10,15 @@ public class CardCollectionAnySizeTest {
 	public void testCardCollectionCardArray() {
 		for(int i = 0; i<10;i++){ //10 repetitions
 			Card[] cards = new Card[(int)Math.random()*1000]; //Creates an array from size 0-1000
+			for(int j=0;j<cards.length; j++)
+				cards[j] = new Card(((int)(1+Math.random()*4)), ((int)(1+Math.random()*13)));
 			CardCollection collection = new CardCollection(cards); //Creates a collection from created card array
-			for(int k = 0; i<collection.getSize();i++){ //For every card in collection
+			for(int k = 0; k<collection.getSize();k++){ //For every card in collection
 				assertEquals(cards[k].getSuit(), collection.getCard(k).getSuit()); //Check suit is initialized correctly
 				assertEquals(cards[k].getRank(), collection.getCard(k).getRank()); //Check rank is initialized correctly
 			}
 		}
 	}
-
 	@Test
 	public void testSort() {
 		Card[] cards = new Card[4];
@@ -86,6 +87,9 @@ public class CardCollectionAnySizeTest {
 		/*
 		 * rank of cards (in order)
 		 * {8, 5, 6, 9, 11, 12, 10, 7}
+		 * 
+		 * even if you sort them,
+		 * {5, 11, 6, 12, 7, 9, 10, 8}
 		 */
 		CardCollection collection = new CardCollection(cards);
 		assertEquals(5, collection.isStraight());
@@ -104,7 +108,6 @@ public class CardCollectionAnySizeTest {
 		collection = new CardCollection(cards);
 		assertEquals(0, collection.isStraight());	
 	}
-
 
 	@Test
 	public void testHasFourOfAKind() {
@@ -187,5 +190,33 @@ public class CardCollectionAnySizeTest {
 
 		subset = collection.getCardCollectionInRange(11, 10);
 		assertNull(subset);
+	}
+
+	@Test
+	public void testEquals() {
+		Card[] cards = new Card[10];
+		for(int i=0; i<cards.length; i++)
+			cards[i] = new Card(1, i+1);
+
+		CardCollection collection1 = new CardCollection(cards);
+
+		Card[] cards2 = new Card[10];
+		for(int i=0; i<cards2.length; i++)
+			cards2[i] = new Card(1, 10-i);
+
+		CardCollection collection2 = new CardCollection(cards2);
+
+		assertTrue(collection1.equals(collection2));
+
+		cards[5] = new Card(4, 1);
+		collection2 = new CardCollection(cards);
+		assertFalse(collection1.equals(collection2));
+
+		cards2 = new Card[9];
+		for(int i=0; i<cards2.length; i++)
+			cards2[i] = new Card(1, i+1);
+
+		collection2 = new CardCollection(cards2);
+		assertFalse(collection1.equals(collection2));
 	}
 }
