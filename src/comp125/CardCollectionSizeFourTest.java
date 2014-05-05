@@ -8,14 +8,15 @@ public class CardCollectionSizeFourTest {
 
 	@Test
 	public void testCardCollectionCardArray() {
-		for(int i = 0;i<10;i++){
+		for(int i = 0;i<10;i++){ //Runs test 10 times with different (probably) values
 			Card[] cards = new Card[4];
 			for(int j=0; j<cards.length; j++)
-				cards[j] = new Card(((int)(1+Math.random()*4)), ((int)(1+Math.random()*13)));
+				cards[j] = new Card(((int)(1+Math.random()*4)), ((int)(1+Math.random()*13))); //Creates a Card array full of random cards
 			CardCollection collection = new CardCollection(cards);
 			for(int k = 0; k<collection.getSize();k++){
 				assertEquals(cards[k].getSuit(), collection.getCard(k).getSuit());
 				assertEquals(cards[k].getRank(), collection.getCard(k).getRank());
+				// Checks the cards in Card array 'card' are equal to those in CardCollection 'collection'
 			}
 		}
 	}

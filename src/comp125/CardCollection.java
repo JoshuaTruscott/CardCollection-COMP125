@@ -213,7 +213,7 @@ public class CardCollection {
 		 other.sort();
 		 if(cards.length != other.cards.length)
 			 return false;
-		for(int i = 0; i<cards.length;i++)
+		for(int i = 0; i<cards.length;i++) //loop checks all ranks and suits in both collections are equal
 				 if(cards[i].getRank() != other.cards[i].getRank() || cards[i].getSuit() != other.cards[i].getSuit())
 					 return false;
 		 return true;
